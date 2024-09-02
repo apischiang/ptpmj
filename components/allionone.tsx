@@ -4,6 +4,7 @@
  * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
  */
 import Link from "next/link"
+import Image from "next/image"
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel"
 
 
@@ -38,7 +39,7 @@ export default function allinone() {
                   </h1>
                   <p className="max-w-[600px] mx-auto text-muted-foreground md:text-xl">
                     Putramas Mulia Jaya provides a wide range of high-quality products and services to meet all your business
-                    needs. From raw materials to finished goods, we've got you covered.
+                    needs. From raw materials to finished goods, we&apos;ve got you covered.
                   </p>
                 </div>
                 <Link href="#" className="mx-auto inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
@@ -46,7 +47,7 @@ export default function allinone() {
                   Get Quotation now!
                   </Link>
               </div>
-              <img
+              <Image
                 src="/pict1.jpg"
                 width="550"
                 height="550"
@@ -62,7 +63,7 @@ export default function allinone() {
               <div className="space-y-2">
                 <h2 className="mb-5 text-3xl font-bold tracking-tighter sm:text-5xl" id="product">Explore Our Wide Range of Products</h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  From industrial supplies to office essentials, we've got you covered. Browse our top product
+                  From industrial supplies to office essentials, we&apos;ve got you covered. Browse our top product
                   categories and find what you need.
                 </p>
               </div>
@@ -73,7 +74,7 @@ export default function allinone() {
                 className="group flex flex-col items-center justify-center space-y-4 rounded-xl bg-background p-6 shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                 prefetch={false}
               >
-                <img
+                <Image
                   src="/pict2.jpg"
                   width="150"
                   height="150"
@@ -90,7 +91,7 @@ export default function allinone() {
                 className="group flex flex-col items-center justify-center space-y-4 rounded-xl bg-background p-6 shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                 prefetch={false}
               >
-                <img
+                <Image
                   src="/pict3.jpg"
                   width="150"
                   height="150"
@@ -107,7 +108,7 @@ export default function allinone() {
                 className="group flex flex-col items-center justify-center space-y-4 rounded-xl bg-background p-6 shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                 prefetch={false}
               >
-                <img
+                <Image
                   src="/pict4.jpg"
                   width="150"
                   height="150"
@@ -157,42 +158,42 @@ export default function allinone() {
                 <CarouselContent>
                   <CarouselItem>
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-                      <img
+                      <Image
                         src="/placeholder.svg"
                         width="140"
                         height="70"
                         alt="Client Logo"
                         className="mx-auto aspect-[2/1] overflow-hidden rounded-lg object-contain object-center"
                       />
-                      <img
+                      <Image
                         src="/placeholder.svg"
                         width="140"
                         height="70"
                         alt="Client Logo"
                         className="mx-auto aspect-[2/1] overflow-hidden rounded-lg object-contain object-center"
                       />
-                      <img
+                      <Image
                         src="/placeholder.svg"
                         width="140"
                         height="70"
                         alt="Client Logo"
                         className="mx-auto aspect-[2/1] overflow-hidden rounded-lg object-contain object-center"
                       />
-                      <img
+                      <Image
                         src="/placeholder.svg"
                         width="140"
                         height="70"
                         alt="Client Logo"
                         className="mx-auto aspect-[2/1] overflow-hidden rounded-lg object-contain object-center"
                       />
-                      <img
+                      <Image
                         src="/placeholder.svg"
                         width="140"
                         height="70"
                         alt="Client Logo"
                         className="mx-auto aspect-[2/1] overflow-hidden rounded-lg object-contain object-center"
                       />
-                      <img
+                      <Image
                         src="/placeholder.svg"
                         width="140"
                         height="70"
@@ -203,42 +204,42 @@ export default function allinone() {
                   </CarouselItem>
                   <CarouselItem>
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-                      <img
+                      <Image
                         src="/placeholder.svg"
                         width="140"
                         height="70"
                         alt="Client Logo"
                         className="mx-auto aspect-[2/1] overflow-hidden rounded-lg object-contain object-center"
                       />
-                      <img
+                      <Image
                         src="/placeholder.svg"
                         width="140"
                         height="70"
                         alt="Client Logo"
                         className="mx-auto aspect-[2/1] overflow-hidden rounded-lg object-contain object-center"
                       />
-                      <img
+                      <Image
                         src="/placeholder.svg"
                         width="140"
                         height="70"
                         alt="Client Logo"
                         className="mx-auto aspect-[2/1] overflow-hidden rounded-lg object-contain object-center"
                       />
-                      <img
+                      <Image
                         src="/placeholder.svg"
                         width="140"
                         height="70"
                         alt="Client Logo"
                         className="mx-auto aspect-[2/1] overflow-hidden rounded-lg object-contain object-center"
                       />
-                      <img
+                      <Image
                         src="/placeholder.svg"
                         width="140"
                         height="70"
                         alt="Client Logo"
                         className="mx-auto aspect-[2/1] overflow-hidden rounded-lg object-contain object-center"
                       />
-                      <img
+                      <Image
                         src="/placeholder.svg"
                         width="140"
                         height="70"
