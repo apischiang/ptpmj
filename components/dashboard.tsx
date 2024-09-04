@@ -1,13 +1,21 @@
 'use client'
 
 import { useState } from 'react'
-import { Menu, X, FileText, ShoppingCart, FileSpreadsheet } from 'lucide-react'
+import { Menu, X, FileText, ShoppingCart, FileSpreadsheet, DollarSign } from 'lucide-react'
 import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 export function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen)
+
+  // Mock data for demonstration
+  const dashboardData = {
+    purchaseOrders: { count: 24, total: 45680 },
+    quotations: { count: 18, total: 32450 },
+    invoices: { count: 31, total: 58920 }
+  }
 
   return (
     <div className="flex h-screen bg-gray-100">
@@ -56,8 +64,43 @@ export function Dashboard() {
         <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100">
           <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
             <div className="px-4 py-6 sm:px-0">
-              <div className="border-4 border-dashed border-gray-200 rounded-lg h-96 flex items-center justify-center">
-                <p className="text-gray-500 text-xl">Main content area</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <Card>
+                  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                    <CardTitle className="text-sm font-medium">Purchase Orders</CardTitle>
+                    <ShoppingCart className="h-4 w-4 text-muted-foreground" />
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-2xl font-bold">{dashboardData.purchaseOrders.count}</div>
+                    <p className="text-xs text-muted-foreground">
+                      Total: ${dashboardData.purchaseOrders.total.toLocaleString()}
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                    <CardTitle className="text-sm font-medium">Quotations</CardTitle>
+                    <FileText className="h-4 w-4 text-muted-foreground" />
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-2xl font-bold">{dashboardData.quotations.count}</div>
+                    <p className="text-xs text-muted-foreground">
+                      Total: ${dashboardData.quotations.total.toLocaleString()}
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                    <CardTitle className="text-sm font-medium">Invoices</CardTitle>
+                    <FileSpreadsheet className="h-4 w-4 text-muted-foreground" />
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-2xl font-bold">{dashboardData.invoices.count}</div>
+                    <p className="text-xs text-muted-foreground">
+                      Total: ${dashboardData.invoices.total.toLocaleString()}
+                    </p>
+                  </CardContent>
+                </Card>
               </div>
             </div>
           </div>
@@ -66,5 +109,3 @@ export function Dashboard() {
     </div>
   )
 }
-
-export default Dashboard;
