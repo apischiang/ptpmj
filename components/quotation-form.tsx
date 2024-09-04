@@ -258,4 +258,4 @@ export function QuotationForm() {
   )
 }
 
-export default QuotationForm
+export default QuotationForm;
