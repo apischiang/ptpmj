@@ -7,8 +7,15 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Trash2, Plus, Save, X } from "lucide-react"
+import { Trash2, Plus, Save, X, Menu } from "lucide-react"
+import { Sidebar } from '@/components/Sidebar'
+import { usePathname } from 'next/navigation'
 
+interface SidebarProps {
+  sidebarOpen: boolean
+  setSidebarOpen: (open: boolean) => void
+  currentPage: string
+}
 interface LineItem {
   no: number
   description: string
@@ -51,7 +58,38 @@ const customers: Customer[] = [
   { id: '3', name: 'Umbrella Corp', address: '789 Pine Ave, Nowhere, NW 13579', receiver: 'Bob Johnson' },
 ]
 
-export function QuotationForm() {
+export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const currentPage = usePathname()
+
+  return (
+    <div className="flex h-screen bg-gray-100">
+      <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} currentPage={currentPage} />
+
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col overflow-hidden">
+        {/* Top Dashboard */}
+        <header className="bg-white shadow-sm">
+          <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <h1 className="text-2xl font-semibold text-gray-900">Quotation</h1>
+            <Button variant="ghost" size="icon" className="lg:hidden" onClick={() => setSidebarOpen(true)}>
+              <Menu className="h-6 w-6" />
+            </Button>
+          </div>
+        </header>
+
+        {/* Page Content */}
+        <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100">
+          <div className="container mx-auto py-6">
+            <QuotationForm />
+          </div>
+        </main>
+      </div>
+    </div>
+  )
+}
+
+function QuotationForm() {
   const [lineItems, setLineItems] = useState<LineItem[]>([initialLineItem])
   const [notification, setNotification] = useState<Notification | null>(null)
   const [selectedCustomerId, setSelectedCustomerId] = useState<string>('')
@@ -113,8 +151,7 @@ export function QuotationForm() {
   const total = subtotal + vat
 
   return (
-    <div className="flex flex-row min-h-screen justify-center items-center">
-    <Card className="w-full max-w-5xl mx-auto ">
+    <Card className="w-full max-w-5xl mx-auto">
       <CardHeader className="flex flex-col space-y-4 pb-2 mb-5">
         <div className="flex justify-between items-start">
           <div>
@@ -254,8 +291,5 @@ export function QuotationForm() {
         </div>
       </CardFooter>
     </Card>
-    </div>
   )
 }
-
-export default QuotationForm;

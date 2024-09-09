@@ -1,14 +1,20 @@
 'use client'
 
 import { useState } from 'react'
-import { Menu, X, FileText, ShoppingCart, FileSpreadsheet, DollarSign } from 'lucide-react'
+import { usePathname } from 'next/navigation'
+import { Menu, ShoppingCart, FileText, FileSpreadsheet } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Sidebar } from '@/components/Sidebar'
+
+// Utility function for consistent number formatting
+const formatNumber = (num: number) => {
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+}
 
 export function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
-
-  const toggleSidebar = () => setSidebarOpen(!sidebarOpen)
+  const currentPage = usePathname()
 
   // Mock data for demonstration
   const dashboardData = {
@@ -19,44 +25,14 @@ export function Dashboard() {
 
   return (
     <div className="flex h-screen bg-gray-100">
-      {/* Sidebar */}
-      <aside className={`bg-white w-64 min-h-screen flex flex-col transition-all duration-300 ease-in-out ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} fixed lg:relative lg:translate-x-0 z-10`}>
-        <div className="flex items-center justify-between p-4 border-b">
-          <h2 className="text-xl font-semibold">Dashboard</h2>
-          <Button variant="ghost" size="icon" className="lg:hidden" onClick={toggleSidebar}>
-            <X className="h-6 w-6" />
-          </Button>
-        </div>
-        <nav className="flex-1 p-4">
-          <ul className="space-y-2">
-            <li>
-              <Button variant="ghost" className="w-full justify-start">
-                <ShoppingCart className="mr-2 h-4 w-4" />
-                Purchase Order
-              </Button>
-            </li>
-            <li>
-              <Button variant="ghost" className="w-full justify-start">
-                <FileText className="mr-2 h-4 w-4" />
-                Quotation
-              </Button>
-            </li>
-            <li>
-              <Button variant="ghost" className="w-full justify-start">
-                <FileSpreadsheet className="mr-2 h-4 w-4" />
-                Invoice
-              </Button>
-            </li>
-          </ul>
-        </nav>
-      </aside>
+      <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} currentPage={currentPage} />
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
         <header className="bg-white shadow-sm">
           <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
             <h1 className="text-2xl font-semibold text-gray-900">Dashboard</h1>
-            <Button variant="ghost" size="icon" className="lg:hidden" onClick={toggleSidebar}>
+            <Button variant="ghost" size="icon" className="lg:hidden" onClick={() => setSidebarOpen(true)}>
               <Menu className="h-6 w-6" />
             </Button>
           </div>
@@ -73,7 +49,7 @@ export function Dashboard() {
                   <CardContent>
                     <div className="text-2xl font-bold">{dashboardData.purchaseOrders.count}</div>
                     <p className="text-xs text-muted-foreground">
-                      Total: ${dashboardData.purchaseOrders.total.toLocaleString()}
+                      Total: ${formatNumber(dashboardData.purchaseOrders.total)}
                     </p>
                   </CardContent>
                 </Card>
@@ -85,7 +61,7 @@ export function Dashboard() {
                   <CardContent>
                     <div className="text-2xl font-bold">{dashboardData.quotations.count}</div>
                     <p className="text-xs text-muted-foreground">
-                      Total: ${dashboardData.quotations.total.toLocaleString()}
+                      Total: ${formatNumber(dashboardData.quotations.total)}
                     </p>
                   </CardContent>
                 </Card>
@@ -97,7 +73,7 @@ export function Dashboard() {
                   <CardContent>
                     <div className="text-2xl font-bold">{dashboardData.invoices.count}</div>
                     <p className="text-xs text-muted-foreground">
-                      Total: ${dashboardData.invoices.total.toLocaleString()}
+                      Total: ${formatNumber(dashboardData.invoices.total)}
                     </p>
                   </CardContent>
                 </Card>
